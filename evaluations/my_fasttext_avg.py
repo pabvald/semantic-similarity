@@ -16,11 +16,19 @@ from we_common import get_wordvec, create_dictionary, batcher_avg
 # PATHs
 PATH_TO_SENTEVAL = '../'
 PATH_TO_DATA = '../data'
-PATH_TO_VEC = 'vector_models/fasttext/wiki-news-300d-1M-subword.vec'
+#PATH_TO_VEC = 'word_embeddings/fasttext/wiki-news-300d-1M-subword.vec'
+PATH_TO_VEC = 'word_embeddings/fasttext/crawl-300d-2M.vec'
 
 # Pre-trained model characteristics 
 VECTOR_DIMENSION = 300 
 WORD2VEC_FORMAT = True
+
+# Preprocessing parameters 
+LOWERCASE = True # Lowercase the text
+LEMMATIZATION = True # Substitute words by their lemma
+PUNCTUATION = True # Remove punctuation characters
+STOP_WORDS = True # Remove stop words
+ONLY_ASCII = True # Remove non-ascii text
 
 # import SentEval
 sys.path.insert(0, PATH_TO_SENTEVAL)
@@ -31,13 +39,14 @@ import senteval
 params_senteval = {'task_path': PATH_TO_DATA, 'usepytorch': False, 'kfold': 5}
 params_senteval['classifier'] = {'nhid': 0, 'optim': 'rmsprop', 'batch_size': 128,
                                  'tenacity': 3, 'epoch_size': 2}
+params_senteval['preprocessing'] = {'lowercase': LOWERCASE, 'lemmatization': LEMMATIZATION, 'stop_words': STOP_WORDS, 
+                                     'punctuation': PUNCTUATION, 'only_ascii': ONLY_ASCII } 
 
 # Set up logger
 logging.basicConfig(format='%(asctime)s : %(message)s', level=logging.DEBUG)
 
 
 # SentEval methods 
-
 def prepare(params, samples):
     """ SentEval prepare method """
     _, params.word2id = create_dictionary(samples)
@@ -54,6 +63,6 @@ def batcher(params, batch):
 
 if __name__ == "__main__":
     se = senteval.engine.SE(params_senteval, batcher, prepare)
-    transfer_tasks = ['MRPC']
+    transfer_tasks = ['STS12']
     results = se.eval(transfer_tasks)
     print(results)

@@ -22,7 +22,6 @@ def create_dictionary(sentences, threshold=0):
     """ Creates a dictionary with words that are present in the sentences """
     words = {}
     for s in sentences:
-        print(s)
         for word in s:
             words[word] = words.get(word, 0) + 1
 

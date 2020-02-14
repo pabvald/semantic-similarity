@@ -11,12 +11,12 @@ import sys
 import io
 import numpy as np
 import logging
-from we_common import get_wordvec, create_dictionary, avg_batcher
+from we_common import get_wordvec, create_dictionary, batcher_avg
 
 # PATHs
 PATH_TO_SENTEVAL = '../'
 PATH_TO_DATA = '../data'
-PATH_TO_VEC = 'vector_models/glove/glove.6B.300d.txt'
+PATH_TO_VEC = 'word_embeddings/glove/glove.6B.300d.txt'
 
 # Pre-trained model characteristics 
 VECTOR_DIMENSION = 300 
@@ -48,12 +48,12 @@ def prepare(params, samples):
 
 def batcher(params, batch):
     """ SentEval batcher method """
-    embeddings = avg_batcher(params, batch)
+    embeddings = batcher_avg(params, batch)
     return embeddings
 
 
 if __name__ == "__main__":
     se = senteval.engine.SE(params_senteval, batcher, prepare)
-    transfer_tasks = ['MRPC']
+    transfer_tasks = ['STS12']
     results = se.eval(transfer_tasks)
     print(results)

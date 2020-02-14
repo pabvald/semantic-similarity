@@ -22,26 +22,40 @@ from scipy.stats import spearmanr, pearsonr
 from senteval.utils import cosine
 from senteval.sick import SICKRelatednessEval
 
+from senteval.my_utils import preprocess
 
 class STSEval(object):
-    def loadFile(self, fpath):
+    
+    def loadFile(self, fpath, pprocessing_params):
+        """ Loads the datasets that form the corresponding STS task """
+
         self.data = {}
         self.samples = []
 
         for dataset in self.datasets:
+            # Load sentences pairs
             sent1, sent2 = zip(*[l.split("\t") for l in
                                io.open(fpath + '/STS.input.%s.txt' % dataset,
                                        encoding='utf8').read().splitlines()])
+            # Load Gold Standard files (similarity scores)
             raw_scores = np.array([x for x in
                                    io.open(fpath + '/STS.gs.%s.txt' % dataset,
                                            encoding='utf8')
                                    .read().splitlines()])
+            # Consider only pairs with a scor
             not_empty_idx = raw_scores != ''
 
             gs_scores = [float(x) for x in raw_scores[not_empty_idx]]
-            sent1 = np.array([s.split() for s in sent1])[not_empty_idx]
-            sent2 = np.array([s.split() for s in sent2])[not_empty_idx]
-            # sort data by length to minimize padding in batcher
+
+            # Preprocess sentences
+            #sent1 = np.array([s.split() for s in sent1])[not_empty_idx]
+            #sent2 = np.array([s.split() for s in sent2])[not_empty_idx]
+            logging.debug("Starting the sentences preprocessing...")
+            sent1 = preprocess(sent1, **pprocessing_params)[not_empty_idx]
+            sent2 = preprocess(sent2, **pprocessing_params)[not_empty_idx]
+            logging.debug("Sentence preprocessed correctly")
+
+            # Sort data by length to minimize padding in batcher
             sorted_data = sorted(zip(sent1, sent2, gs_scores),
                                  key=lambda z: (len(z[0]), len(z[1]), z[2]))
             sent1, sent2, gs_scores = map(list, zip(*sorted_data))
@@ -49,14 +63,20 @@ class STSEval(object):
             self.data[dataset] = (sent1, sent2, gs_scores)
             self.samples += sent1 + sent2
 
+
     def do_prepare(self, params, prepare):
+        """ Establishes the similarity method and invokes prepare(...) """
+
         if 'similarity' in params:
             self.similarity = params.similarity
         else:  # Default similarity is cosine
             self.similarity = lambda s1, s2: np.nan_to_num(cosine(np.nan_to_num(s1), np.nan_to_num(s2)))
         return prepare(params, self.samples)
 
+
     def run(self, params, batcher):
+        """ Obtains the results of applying the corresponding method """
+
         results = {}
         for dataset in self.datasets:
             sys_scores = []
@@ -105,52 +125,52 @@ class STSEval(object):
 
 
 class STS12Eval(STSEval):
-    def __init__(self, taskpath, seed=1111):
+    def __init__(self, taskpath, preprocessing, seed=1111 ):
         logging.debug('***** Transfer task : STS12 *****\n\n')
         self.seed = seed
         self.datasets = ['MSRpar', 'MSRvid', 'SMTeuroparl',
                          'surprise.OnWN', 'surprise.SMTnews']
-        self.loadFile(taskpath)
+        self.loadFile(taskpath, preprocessing)
 
 
 class STS13Eval(STSEval):
     # STS13 here does not contain the "SMT" subtask due to LICENSE issue
-    def __init__(self, taskpath, seed=1111):
+    def __init__(self, taskpath, preprocessing, seed=1111):
         logging.debug('***** Transfer task : STS13 (-SMT) *****\n\n')
         self.seed = seed
         self.datasets = ['FNWN', 'headlines', 'OnWN']
-        self.loadFile(taskpath)
+        self.loadFile(taskpath, preprocessing)
 
 
 class STS14Eval(STSEval):
-    def __init__(self, taskpath, seed=1111):
+    def __init__(self, taskpath, preprocessing, seed=1111):
         logging.debug('***** Transfer task : STS14 *****\n\n')
         self.seed = seed
         self.datasets = ['deft-forum', 'deft-news', 'headlines',
                          'images', 'OnWN', 'tweet-news']
-        self.loadFile(taskpath)
+        self.loadFile(taskpath, preprocessing)
 
 
 class STS15Eval(STSEval):
-    def __init__(self, taskpath, seed=1111):
+    def __init__(self, taskpath, preprocessing, seed=1111):
         logging.debug('***** Transfer task : STS15 *****\n\n')
         self.seed = seed
         self.datasets = ['answers-forums', 'answers-students',
                          'belief', 'headlines', 'images']
-        self.loadFile(taskpath)
+        self.loadFile(taskpath, preprocessing)
 
 
 class STS16Eval(STSEval):
-    def __init__(self, taskpath, seed=1111):
+    def __init__(self, taskpath, preprocessing, seed=1111):
         logging.debug('***** Transfer task : STS16 *****\n\n')
         self.seed = seed
         self.datasets = ['answer-answer', 'headlines', 'plagiarism',
                          'postediting', 'question-question']
-        self.loadFile(taskpath)
+        self.loadFile(taskpath, preprocessing)
 
 
 class STSBenchmarkEval(SICKRelatednessEval):
-    def __init__(self, task_path, seed=1111):
+    def __init__(self, task_path, preprocessing, seed=1111):
         logging.debug('\n\n***** Transfer task : STSBenchmark*****\n\n')
         self.seed = seed
         train = self.loadFile(os.path.join(task_path, 'sts-train.csv'))
