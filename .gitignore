@@ -1,5 +1,5 @@
-evaluations/word_embeddings
-evaluations/__pycache__
-senteval/__pycache__
-.venv
-.vscode
+data/embedding/*
+data/datasets/SICK
+data/datasets/STS
+.*
+__pycache__
