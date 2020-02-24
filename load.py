@@ -1,9 +1,25 @@
+# Copyright (c) 2017-present, Facebook, Inc.
+# All rights reserved.
+#
+# This source code is licensed under the license found in the
+# SENTEVAL_LICENSE file in the root directory of this source tree.
+#
+
+
+"""
+    This module contains different functions to load the test datasets
+    of the SemEval's STS tasks from 2012 to 2016. This functions are based
+    on those found in the SentEval toolkit.
+"""
+
+
 import io
 import numpy as np
 from utils import preprocess
 
 
 def loadFile(path, datasets, preprocessing):
+    """ Loads and STS file and pre-processes its sentences """
     data = {}
 
     for dataset in datasets:
@@ -36,35 +52,37 @@ def loadFile(path, datasets, preprocessing):
         
     return data
 
-def loadSTS12(path, preprocessing ):
-    print('***** Transfer task : STS12 *****\n\n')
+def loadSTS12(path, preprocessing):
+    """ Loads the SemEval-2012's Semantic Textual Similarity task"""
+    print('\n***** TASK: STS12 *****\n')
     datasets = ['MSRpar', 'MSRvid', 'SMTeuroparl',
                         'surprise.OnWN', 'surprise.SMTnews']
     return loadFile('{}/STS12-en-test'.format(path), datasets, preprocessing)
 
-# STS13 here does not contain the "SMT" subtask due to LICENSE issue
 def loadSTS13(path, preprocessing):
-    print('***** Transfer task : STS13 (-SMT) *****\n\n')
+    """ Loads the SemEval-2013's Semantic Textual Similarity task"""
+    # STS13 here does not contain the "SMT" subtask due to LICENSE issue
+    print('\n***** TASK: STS13 (-SMT) ***\n\n')
     datasets = ['FNWN', 'headlines', 'OnWN']
     return loadFile('{}/STS13-en-test'.format(path), datasets, preprocessing)
 
-
 def loadSTS14(path, preprocessing):
-    print('***** Transfer task : STS14 *****\n\n')
+    """ Loads the SemEval-2014's Semantic Textual Similarity task"""
+    print('\n***** TASK: STS14 *****\n')
     datasets = ['deft-forum', 'deft-news', 'headlines',
                         'images', 'OnWN', 'tweet-news']
     return loadFile('{}/STS14-en-test'.format(path), datasets, preprocessing)
 
-
 def loadSTS15(path, preprocessing):
-    print('***** Transfer task : STS15 *****\n\n')
+    """ Loads the SemEval-2015's Semantic Textual Similarity task"""
+    print('\n***** TASK: STS15 *****\n')
     datasets = ['answers-forums', 'answers-students',
                         'belief', 'headlines', 'images']
     return loadFile('{}/STS15-en-test'.format(path), datasets, preprocessing)
 
-
 def loadSTS16(path, preprocessing):
-    print('***** Transfer task : STS16 *****\n\n')
+    """ Loads the SemEval-2016's Semantic Textual Similarity task"""
+    print('\n***** TASK: STS16 *****\n')
     datasets = ['answer-answer', 'headlines', 'plagiarism',
                         'postediting', 'question-question']
     return loadFile('{}/STS16-en-test'.format(path), datasets, preprocessing)

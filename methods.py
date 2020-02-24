@@ -3,7 +3,10 @@ from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.decomposition import TruncatedSVD
 
 def avg_cosine(sentences1, sentences2, model):
-    """ """
+    """ Computes the cosine similarity between pairs of sentence
+        embeddings, which are obtained computing the average of the 
+        corresponding sentence's words embeddings found in the given
+        model """
     sims = []
     for (sent1, sent2) in zip(sentences1, sentences2):
 
@@ -23,7 +26,8 @@ def avg_cosine(sentences1, sentences2, model):
     return sims
 
 def wmd(sentences1, sentences2, model):
-    """ """ 
+    """ Computes the Word Mover's distance between pairs of sentences. The 
+        WMD is computed from the given model """ 
     sims = []
     for (sent1, sent2) in zip(sentences1, sentences2):
         tokens1 = list(filter(lambda token: token in model, sent1))

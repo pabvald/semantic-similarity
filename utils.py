@@ -34,14 +34,13 @@ def preprocess(sentences, lowercase=True, stop_words=True, punctuation=True,
 
     return np.array(preprocessed_sentences)
 
-
 def evaluate(task, methods):
-    """ Computes the weigthed Pearson and Spearman correlations of a task 
-        using the specified methods"""
+    """ Computes the weigthed Pearson and Spearman correlations of a STS task 
+        using the given methods"""
     pearson_correlations = {}
     spearman_correlations = {}
     
-    for label, method in evaluations:
+    for label, method in methods:
         task_pearson = []
         task_spearman = []
         task_weights = [] 
