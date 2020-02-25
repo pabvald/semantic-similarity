@@ -34,27 +34,49 @@ def preprocess(sentences, lowercase=True, stop_words=True, punctuation=True,
 
     return np.array(preprocessed_sentences)
 
-def evaluate(task, methods):
-    """ Computes the weigthed Pearson and Spearman correlations of a STS task 
+def evaluate(corpus, methods):
+    """ Computes the weigthed Pearson and Spearman correlations of a STS corpus 
         using the given methods"""
     pearson_correlations = {}
     spearman_correlations = {}
     
     for label, method in methods:
-        task_pearson = []
-        task_spearman = []
-        task_weights = [] 
-        for dataset in task.keys():
-            sentences1, sentences2, gs = task[dataset]
-            task_weights.append(len(gs))
+        corpus_pearson = []
+        corpus_spearman = []
+        corpus_weights = [] 
+        for dataset in corpus.keys():
+            sentences1, sentences2, gs = corpus[dataset]
+            corpus_weights.append(len(gs))
             sims = method(sentences1, sentences2)
-            task_pearson.append(pearsonr(sims, gs)[0])
-            task_spearman.append(spearmanr(sims, gs)[0])
+            corpus_pearson.append(pearsonr(sims, gs)[0])
+            corpus_spearman.append(spearmanr(sims, gs)[0])
 
-        wpearson = sum(task_pearson[i] * task_weights[i] / sum(task_weights) for i in range(len(task_weights)))
-        wspearman =  sum(task_spearman[i] * task_weights[i] / sum(task_weights) for i in range(len(task_weights)))
+        wpearson = sum(corpus_pearson[i] * corpus_weights[i] / sum(corpus_weights) for i in range(len(corpus_weights)))
+        wspearman =  sum(corpus_spearman[i] * corpus_weights[i] / sum(corpus_weights) for i in range(len(corpus_weights)))
        
         pearson_correlations[label] = wpearson
         spearman_correlations[label] = wspearman
         
     return pearson_correlations, spearman_correlations
+
+def get_frequencies(corpus, threshold=0):
+    """ Computes the frequencies of a corpus"""
+    freqs = {}
+    for dataset in corpus.keys():
+        sentences1, sentences2, gs = corpus[dataset]
+        
+        for sent in (sentences1 + sentences2):
+            for word in sent:
+                freqs[word] = freqs.get(word, 0) + 1
+
+        if threshold > 0:
+            new_freqs = {}
+            for word in freqs:
+                if freqs[word] >= threshold:
+                    new_freqs[word] = freqs[word]
+            freqs = new_freqs
+        freqs['<s>'] = 1e9 + 4
+        freqs['</s>'] = 1e9 + 3
+        freqs['<p>'] = 1e9 + 2
+        
+    return freqs
