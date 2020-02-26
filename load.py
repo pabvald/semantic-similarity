@@ -29,7 +29,7 @@ def load_frequencies(path):
         
     return frequencies
 
-def load_file(path, datasets, preprocessing):
+def load_file(path, datasets, preprocessing, verbose=False):
     """ Loads and STS file and pre-processes its sentences """
     data = {}
 
@@ -49,10 +49,12 @@ def load_file(path, datasets, preprocessing):
         gs_scores = [float(x) for x in raw_scores[not_empty_idx]]
 
         # Preprocess sentences
-        print("Preprocessing -{}-".format(dataset))
+        if verbose:
+            print("Preprocessing -{}-".format(dataset))
         sent1 = preprocess(sent1, **preprocessing)[not_empty_idx]
         sent2 = preprocess(sent2, **preprocessing)[not_empty_idx]
-        print("-{}- preprocessed correctly".format(dataset))
+        if verbose:
+            print("-{}- preprocessed correctly".format(dataset))
         
         # Sort data by length to minimize padding in batcher
         sorted_data = sorted(zip(sent1, sent2, gs_scores),
@@ -63,38 +65,43 @@ def load_file(path, datasets, preprocessing):
         
     return data
 
-def load_sts_12(path, preprocessing):
+def load_sts_12(path, preprocessing, verbose=False):
     """ Loads the SemEval-2012's Semantic Textual Similarity task"""
-    print('\n***** TASK: STS12 *****\n')
+    if verbose:
+        print('\n***** TASK: STS12 *****\n')
     datasets = ['MSRpar', 'MSRvid', 'SMTeuroparl',
                         'surprise.OnWN', 'surprise.SMTnews']
-    return load_file('{}/STS12-en-test'.format(path), datasets, preprocessing)
+    return load_file('{}/STS12-en-test'.format(path), datasets, preprocessing, verbose=verbose)
 
-def load_sts_13(path, preprocessing):
+def load_sts_13(path, preprocessing, verbose=False):
     """ Loads the SemEval-2013's Semantic Textual Similarity task"""
     # STS13 here does not contain the "SMT" subtask due to LICENSE issue
-    print('\n***** TASK: STS13 (-SMT) ***\n\n')
+    if verbose:
+        print('\n***** TASK: STS13 (-SMT) ***\n\n')
     datasets = ['FNWN', 'headlines', 'OnWN']
-    return load_file('{}/STS13-en-test'.format(path), datasets, preprocessing)
+    return load_file('{}/STS13-en-test'.format(path), datasets, preprocessing, verbose=verbose)
 
-def load_sts_14(path, preprocessing):
+def load_sts_14(path, preprocessing, verbose=False):
     """ Loads the SemEval-2014's Semantic Textual Similarity task"""
-    print('\n***** TASK: STS14 *****\n')
+    if verbose:
+        print('\n***** TASK: STS14 *****\n')
     datasets = ['deft-forum', 'deft-news', 'headlines',
                         'images', 'OnWN', 'tweet-news']
-    return load_file('{}/STS14-en-test'.format(path), datasets, preprocessing)
+    return load_file('{}/STS14-en-test'.format(path), datasets, preprocessing, verbose=verbose)
 
-def load_sts_15(path, preprocessing):
+def load_sts_15(path, preprocessing, verbose=False):
     """ Loads the SemEval-2015's Semantic Textual Similarity task"""
-    print('\n***** TASK: STS15 *****\n')
+    if verbose:
+        print('\n***** TASK: STS15 *****\n')
     datasets = ['answers-forums', 'answers-students',
                         'belief', 'headlines', 'images']
-    return load_file('{}/STS15-en-test'.format(path), datasets, preprocessing)
+    return load_file('{}/STS15-en-test'.format(path), datasets, preprocessing, verbose=verbose)
 
-def load_sts_16(path, preprocessing):
+def load_sts_16(path, preprocessing, verbose=False):
     """ Loads the SemEval-2016's Semantic Textual Similarity task"""
-    print('\n***** TASK: STS16 *****\n')
+    if verbose:
+        print('\n***** TASK: STS16 *****\n')
     datasets = ['answer-answer', 'headlines', 'plagiarism',
                         'postediting', 'question-question']
-    return load_file('{}/STS16-en-test'.format(path), datasets, preprocessing)
+    return load_file('{}/STS16-en-test'.format(path), datasets, preprocessing, verbose=verbose)
 
