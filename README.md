@@ -7,6 +7,9 @@
 
 
 <hr>
+
+
+
 # Comparison of pre-trained Word2Vec, GloVe and FastText vectors to measure semantic similarity between sentence pairs
 
 
