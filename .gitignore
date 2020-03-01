@@ -3,3 +3,4 @@ data/datasets/SICK
 data/datasets/STS
 .*
 __pycache__
+results.ods
