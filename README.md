@@ -40,7 +40,7 @@
     - **frequencies.tsv**
 - **.gitignore**
 - **LICENSE**
-- **SENTEVAL_LICENSE**: license of the [SentEval] toolkit (https://github.com/facebookresearch/SentEval) developed by Facebook.
+- **SENTEVAL_LICENSE**: license of the [SentEval](https://github.com/facebookresearch/SentEval) toolkit  developed by Facebook.
 - **evaluation.ipynb**: Jupyter Notebook file in which the evaluation carried out is developed.
 - **load.py**: Contains a set of functions to load and preprocess the different data sets used. The code is based on what can be found in the [SentEval] toolkit (https://github.com/facebookresearch/SentEval).
 - **methods.py**: Contains the functions that implement the three evaluated methods to calculate the semantic similarity between two pairs of sentences: average (average), * Smooth Inverse Frequency * (SIF), and * Word Mover's distance *.
