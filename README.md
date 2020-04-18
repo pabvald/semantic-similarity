@@ -33,8 +33,6 @@
 - **utils.py**: contiene algunas funciones de utilidad como para preprocesar las oraciones y evaluar los resultados de los diferentes métodos.
 
 
-## Dependencias 
-
 
 <hr>
 
@@ -73,4 +71,3 @@
 - **methods.py**: contains the functions that implement the three evaluated methods to calculate the semantic similarity between two pairs of sentences: average, Smooth Inverse Frequency(SIF), and Word Mover's distance.
 - **utils.py**: contains some utility functions to preprocess sentences and evaluate the results of the different methods.
 
-## Requirements
