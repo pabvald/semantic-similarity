@@ -1,6 +1,3 @@
-data/embedding/*
-data/datasets/SICK
-data/datasets/STS
-.*
+.venv
+.idea
 __pycache__
-results.ods

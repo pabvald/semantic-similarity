@@ -30,6 +30,7 @@ def load_frequencies(path):
         
     return frequencies
 
+
 def load_file_STS(path, datasets, preprocessing, verbose=False):
     """ Loads a STS test file and preprocesses its sentences """
     data = {}
@@ -66,6 +67,7 @@ def load_file_STS(path, datasets, preprocessing, verbose=False):
         
     return data
 
+
 def load_SICK(path, preprocessing, verbose=False):
     """ Loads the SICK train, dev and test files and preprocess its sentences """
     if verbose:
@@ -81,17 +83,18 @@ def load_SICK(path, preprocessing, verbose=False):
     
     return sick_all
 
+
 def load_file_SICK(path, preprocessing):
     """ Loads a SICK file and preprocess its sentences """
-    skipFirstLine = True
+    skip_first_line = True
     sent1 = []
     sent2 = []
     sim = []
     # Read file
     with io.open(path, 'r', encoding='utf-8') as f:
         for line in f:
-            if skipFirstLine:
-                skipFirstLine = False
+            if skip_first_line:
+                skip_first_line = False
             else:
                 text = line.strip().split('\t')
                 sent1.append(text[1])
@@ -104,6 +107,7 @@ def load_file_SICK(path, preprocessing):
     
     return (sent1, sent2, sim)
 
+
 def load_sts_12(path, preprocessing, verbose=False):
     """ Loads the SemEval-2012's Semantic Textual Similarity task"""
     if verbose:
@@ -111,6 +115,7 @@ def load_sts_12(path, preprocessing, verbose=False):
     datasets = ['MSRpar', 'MSRvid', 'SMTeuroparl',
                         'surprise.OnWN', 'surprise.SMTnews']
     return load_file_STS('{}/STS12-en-test'.format(path), datasets, preprocessing, verbose=verbose)
+
 
 def load_sts_13(path, preprocessing, verbose=False):
     """ Loads the SemEval-2013's Semantic Textual Similarity task"""
@@ -120,6 +125,7 @@ def load_sts_13(path, preprocessing, verbose=False):
     datasets = ['FNWN', 'headlines', 'OnWN']
     return load_file_STS('{}/STS13-en-test'.format(path), datasets, preprocessing, verbose=verbose)
 
+
 def load_sts_14(path, preprocessing, verbose=False):
     """ Loads the SemEval-2014's Semantic Textual Similarity task"""
     if verbose:
@@ -128,6 +134,7 @@ def load_sts_14(path, preprocessing, verbose=False):
                         'images', 'OnWN', 'tweet-news']
     return load_file_STS('{}/STS14-en-test'.format(path), datasets, preprocessing, verbose=verbose)
 
+
 def load_sts_15(path, preprocessing, verbose=False):
     """ Loads the SemEval-2015's Semantic Textual Similarity task"""
     if verbose:
@@ -135,6 +142,7 @@ def load_sts_15(path, preprocessing, verbose=False):
     datasets = ['answers-forums', 'answers-students',
                         'belief', 'headlines', 'images']
     return load_file_STS('{}/STS15-en-test'.format(path), datasets, preprocessing, verbose=verbose)
+
 
 def load_sts_16(path, preprocessing, verbose=False):
     """ Loads the SemEval-2016's Semantic Textual Similarity task"""

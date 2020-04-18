@@ -2,6 +2,7 @@ import numpy as np
 import spacy
 from scipy.stats import spearmanr, pearsonr
 
+
 def preprocess(sentences, lowercase=True, stop_words=True, punctuation=True,
                                                  only_ascii=True, lemmatization=True):
     """ Preprocesses the given sentences applying the specified filters 
@@ -34,6 +35,7 @@ def preprocess(sentences, lowercase=True, stop_words=True, punctuation=True,
 
     return np.array(preprocessed_sentences)
 
+
 def evaluate(corpus, methods):
     """ Computes the weigthed Pearson and Spearman correlations of a STS corpus 
         using the given methods"""
@@ -52,12 +54,13 @@ def evaluate(corpus, methods):
             corpus_spearman.append(spearmanr(sims, gs)[0])
 
         wpearson = sum(corpus_pearson[i] * corpus_weights[i] / sum(corpus_weights) for i in range(len(corpus_weights)))
-        wspearman =  sum(corpus_spearman[i] * corpus_weights[i] / sum(corpus_weights) for i in range(len(corpus_weights)))
+        wspearman = sum(corpus_spearman[i] * corpus_weights[i] / sum(corpus_weights) for i in range(len(corpus_weights)))
        
         pearson_correlations[label] = wpearson
         spearman_correlations[label] = wspearman
         
     return pearson_correlations, spearman_correlations
+
 
 def get_frequencies(corpus, threshold=0):
     """ Computes the frequencies of a corpus"""

@@ -2,6 +2,7 @@ import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.decomposition import TruncatedSVD
 
+
 def avg_cosine(sentences1, sentences2, model):
     """ Computes the cosine similarity between pairs of sentence
         embeddings, which are obtained computing the average of the 
@@ -25,6 +26,7 @@ def avg_cosine(sentences1, sentences2, model):
 
     return sims
 
+
 def remove_first_principal_component(X):
     """ Removes the First Principal Component of X """    
     svd = TruncatedSVD(n_components=1, n_iter=7, random_state=0)
@@ -32,6 +34,7 @@ def remove_first_principal_component(X):
     pc = svd.components_
     XX = X - X.dot(pc.transpose()) * pc
     return XX
+
 
 def sif_cosine(sentences1, sentences2, model, frequencies={}, a=0.001):
     """ Computes the cosine similarity between pairs of sentence
@@ -67,6 +70,7 @@ def sif_cosine(sentences1, sentences2, model, frequencies={}, a=0.001):
         sims.append(cosine_similarity(embeddings[i*2].reshape(1, -1), embeddings[i*2+1].reshape(1, -1))[0][0])
 
     return sims
+
 
 def wmd(sentences1, sentences2, model):
     """ Computes the Word Mover's distance between pairs of sentences. The 
