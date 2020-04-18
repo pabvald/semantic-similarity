@@ -1,6 +1,10 @@
 # Comparativa de vectores pre-entrenados de Word2Vec, GloVe y FastText para medir la similaridad semántica entre pares de oraciones
 
 
+## Evaluación
+[Ver evaluación](./evaluation.ipynb) 
+
+## Estructura del repositorio
 - **data/**
     - **datatsets/**
         - **get_datasets.bash**: *script* que permite descargar los conjuntos de datos utilizados  en la evaluación y que es una modificación del presente en el toolkit [SentEval](https://github.com/facebookresearch/SentEval).
@@ -29,11 +33,20 @@
 - **utils.py**: contiene algunas funciones de utilidad como para preprocesar las oraciones y evaluar los resultados de los diferentes métodos.
 
 
+## Dependencias 
+
+
 <hr>
 
 
 
 # Comparison of pre-trained Word2Vec, GloVe and FastText vectors to measure semantic similarity between sentence pairs
+
+## Evaluation
+
+[See evaluation](./evaluation.ipynb) (in Spanish)
+
+## Repository structure
 
 - **data/**
     - **datatsets/**
@@ -60,4 +73,4 @@
 - **methods.py**: contains the functions that implement the three evaluated methods to calculate the semantic similarity between two pairs of sentences: average, Smooth Inverse Frequency(SIF), and Word Mover's distance.
 - **utils.py**: contains some utility functions to preprocess sentences and evaluate the results of the different methods.
 
-
+## Requirements
