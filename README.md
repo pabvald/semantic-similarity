@@ -33,6 +33,9 @@
 - **utils.py**: contains some utility functions to preprocess sentences and evaluate the results of the different methods.
 
 <hr>
+
+
+
 # Comparativa de vectores pre-entrenados de Word2Vec, GloVe y FastText para medir la similaridad semántica entre pares de oraciones
 
 
