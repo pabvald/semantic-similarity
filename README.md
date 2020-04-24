@@ -1,3 +1,38 @@
+
+# Comparison of pre-trained Word2Vec, GloVe and FastText vectors to measure semantic similarity between sentence pairs (español debajo)
+
+## Evaluation
+
+[See evaluation](./evaluation.ipynb) (in Spanish)
+
+## Repository structure
+
+- **data/**
+    - **datatsets/**
+    - **get_datasets.bash**: script that downloads the data sets used in the evaluation and which is a modification of the one present in the [SentEval](https://github.com/facebookresearch/SentEval) toolkit .
+    - **tokenizer.vec**
+    - **embedding/**
+        - **fasttext/get_fasttext_embeddings.bash**: script that downloads the set of word vectors computed with the FastText used.
+        - **gloVe/**
+            - **2word2vec.py**: transforms the GloVe vector set to Word2Vec format.
+            - **get_glove_embeddings.bash**: script that downloads the GloVe word embeddings set used.
+    - **word2vec/get_word2vec_embeddings.bash**: script that downloads the Word2Vec word embeddings set used.
+    - **frequencies.tsv**
+
+- **.gitignore**
+
+- **LICENSE**
+
+- **SENTEVAL_LICENSE**: license of the [SentEval](https://github.com/facebookresearch/SentEval) toolkit  developed by Facebook.
+
+- **evaluation.ipynb**: Jupyter Notebook file in which the evaluation carried out is developed.
+
+- **load.py**: contains a set of functions to load and preprocess the different data sets used. The code is based on what can be found in the [SentEval](https://github.com/facebookresearch/SentEval) toolkit .
+
+- **methods.py**: contains the functions that implement the three evaluated methods to calculate the semantic similarity between two pairs of sentences: average, Smooth Inverse Frequency(SIF), and Word Mover's distance.
+- **utils.py**: contains some utility functions to preprocess sentences and evaluate the results of the different methods.
+
+<hr>
 # Comparativa de vectores pre-entrenados de Word2Vec, GloVe y FastText para medir la similaridad semántica entre pares de oraciones
 
 
@@ -34,40 +69,4 @@
 
 
 
-<hr>
-
-
-
-# Comparison of pre-trained Word2Vec, GloVe and FastText vectors to measure semantic similarity between sentence pairs
-
-## Evaluation
-
-[See evaluation](./evaluation.ipynb) (in Spanish)
-
-## Repository structure
-
-- **data/**
-    - **datatsets/**
-    - **get_datasets.bash**: script that downloads the data sets used in the evaluation and which is a modification of the one present in the [SentEval](https://github.com/facebookresearch/SentEval) toolkit .
-    - **tokenizer.vec**
-    - **embedding/**
-        - **fasttext/get_fasttext_embeddings.bash**: script that downloads the set of word vectors computed with the FastText used.
-        - **gloVe/**
-            - **2word2vec.py**: transforms the GloVe vector set to Word2Vec format.
-            - **get_glove_embeddings.bash**: script that downloads the GloVe word embeddings set used.
-    - **word2vec/get_word2vec_embeddings.bash**: script that downloads the Word2Vec word embeddings set used.
-    - **frequencies.tsv**
-
-- **.gitignore**
-
-- **LICENSE**
-
-- **SENTEVAL_LICENSE**: license of the [SentEval](https://github.com/facebookresearch/SentEval) toolkit  developed by Facebook.
-
-- **evaluation.ipynb**: Jupyter Notebook file in which the evaluation carried out is developed.
-
-- **load.py**: contains a set of functions to load and preprocess the different data sets used. The code is based on what can be found in the [SentEval](https://github.com/facebookresearch/SentEval) toolkit .
-
-- **methods.py**: contains the functions that implement the three evaluated methods to calculate the semantic similarity between two pairs of sentences: average, Smooth Inverse Frequency(SIF), and Word Mover's distance.
-- **utils.py**: contains some utility functions to preprocess sentences and evaluate the results of the different methods.
 
