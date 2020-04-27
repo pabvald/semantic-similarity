@@ -1,13 +1,13 @@
-# Comparativa de vectores pre-entrenados de Word2Vec, GloVe y FastText para medir la similaridad semántica entre pares de oraciones
+# Comparativa de vectores pre-entrenados de Word2Vec, GloVe y FastText para medir la similaridad semántica entre pares de oraciones (English below)
 
-Parte del Trabajo de Fin de Grado ´**Asistentes virtuales: estado del arte y desarrollo de un prototipo** realizado por D. Pablo Valdunciel Sánchez.
+Parte del Trabajo de Fin de Grado **"Asistentes virtuales: estado del arte y desarrollo de un prototipo"** realizado por D. Pablo Valdunciel Sánchez.
  
 
 
 ## Estructura del repositorio
 - **data/**
     - **datatsets/**
-        - **get_datasets.bash**: *script* que permite descargar los conjuntos de datos utilizados  en la evaluación y que es una modificación del presente en el toolkit [SentEval](https://github.com/facebookresearch/SentEval).
+        - **get_datasets.bash**: *script* que permite descargar los conjuntos de datos utilizados  en la evaluación y que es una modificación del proporcionado en el toolkit [SentEval](https://github.com/facebookresearch/SentEval).
         - **tokenizer.vec**
     - **embedding/**
         - **fasttext/get_fasttext_embeddings.bash**: *script* que descarga el conjunto de de vectores de palabras computado con FastText utilizado.
@@ -34,7 +34,7 @@ Parte del Trabajo de Fin de Grado ´**Asistentes virtuales: estado del arte y de
 
 
 ## Evaluación
-Para ver la evaluación, acceda al fichero [evaluation.ipynb](./evaluation.ipynb). En el caso de que desee ejecutar el código de la evaluación, puede seguir los siguientes pasos:
+Para ver la evaluación, acceda al fichero [evaluation.pdf](./evaluation.pdf). En el caso de que desee ejecutar el código de la evaluación, contenido en el fichero de Jupyter Notebook [evaluation.ipynb](./evaluation.ipynb), puede seguir los siguientes pasos:
 
 ### 1. Instalación de  Python3.7 y su herramienta de entornos virtuales
 En primer lugar, instale Python3.7 y la herramienta de entornos virtuales: 
