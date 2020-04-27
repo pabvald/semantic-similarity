@@ -2,12 +2,11 @@
 
 Parte del Trabajo de Fin de Grado **"Asistentes virtuales: estado del arte y desarrollo de un prototipo"** realizado por D. Pablo Valdunciel Sánchez.
  
-
-
 ## Estructura del repositorio
+
 - **data/**
     - **datatsets/**
-        - **get_datasets.bash**: *script* que permite descargar los conjuntos de datos utilizados  en la evaluación y que es una modificación del proporcionado en el toolkit [SentEval](https://github.com/facebookresearch/SentEval).
+        - **get_datasets.bash**: *script* que permite descargar los conjuntos de datos utilizados  en la evaluación y que es una modificación del presente en el toolkit [SentEval](https://github.com/facebookresearch/SentEval).
         - **tokenizer.vec**
     - **embedding/**
         - **fasttext/get_fasttext_embeddings.bash**: *script* que descarga el conjunto de de vectores de palabras computado con FastText utilizado.
@@ -31,6 +30,7 @@ Parte del Trabajo de Fin de Grado **"Asistentes virtuales: estado del arte y des
 - **methods.py**: contiene las funciones que implementan los tres métodos evaluados para calcular la similiridad semántica entre dos pares de oraciones: media (average), *Smooth Inverse Frequency* (SIF), y *Word Mover's distance*.
 
 - **utils.py**: contiene algunas funciones de utilidad como para preprocesar las oraciones y evaluar los resultados de los diferentes métodos.
+
 
 
 ## Evaluación
@@ -129,15 +129,15 @@ spacy==2.2.4
 
 
 
-# Comparison of pre-trained Word2Vec, GloVe and FastText vectors to measure semantic similarity between sentence pairs
+# Comparativa de vectores pre-entrenados de Word2Vec, GloVe y FastText para medir la similaridad semántica entre pares de oraciones
 
 
 ## Repository structure
 
 - **data/**
     - **datatsets/**
-    - **get_datasets.bash**: script that downloads the data sets used in the evaluation and which is a modification of the one present in the [SentEval](https://github.com/facebookresearch/SentEval) toolkit .
-    - **tokenizer.vec**
+        - **get_datasets.bash**: *script* que permite descargar los conjuntos de datos utilizados  en la evaluación y que es una modificación del proporcionado en el toolkit [SentEval](https://github.com/facebookresearch/SentEval).
+        - **tokenizer.vec**
     - **embedding/**
         - **fasttext/get_fasttext_embeddings.bash**: script that downloads the set of word vectors computed with the FastText used.
         - **gloVe/**
@@ -155,10 +155,6 @@ spacy==2.2.4
 - **evaluation.ipynb**: Jupyter Notebook file in which the evaluation carried out is developed.
 
 - **load.py**: contains a set of functions to load and preprocess the different data sets used. The code is based on what can be found in the [SentEval](https://github.com/facebookresearch/SentEval) toolkit .
-
-- **methods.py**: contains the functions that implement the three evaluated methods to calculate the semantic similarity between two pairs of sentences: average, Smooth Inverse Frequency(SIF), and Word Mover's distance.
-- **utils.py**: contains some utility functions to preprocess sentences and evaluate the results of the different methods.
-
 
 
 ## Evaluation
