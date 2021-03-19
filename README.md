@@ -27,7 +27,7 @@
 
 ## Evaluation
 
-[See evaluation](./evaluation.ipynb) (in Spanish)
+[See evaluation notebook](./evaluation.ipynb) (in Spanish)
 
 ## Dependencies
 ```
