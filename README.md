@@ -1,4 +1,48 @@
-# Comparativa de vectores pre-entrenados de Word2Vec, GloVe y FastText para medir la similaridad semántica entre pares de oraciones (English below)
+# Comparison of pre-trained Word2Vec, GloVe and FastText vectors to measure semantic similarity between pairs of sentences (Spanish version below)
+
+## Repository structure
+
+- **data/**
+    - **datatsets/**
+        - **get_datasets.bash**: *script* to download the datasets used in the evaluation, which is a modification of the one provided in the [SentEval](https://github.com/facebookresearch/SentEval) toolkit.
+        - **tokenizer.vec**
+    - **embedding/**
+        - **fasttext/get_fasttext_embeddings.bash**: script that downloads the set of word vectors computed with the FastText used.
+        - **gloVe/**
+            - **2word2vec.py**: transforms the GloVe vector set to Word2Vec format.
+            - **get_glove_embeddings.bash**: script that downloads the GloVe word embeddings set used.
+    - **word2vec/get_word2vec_embeddings.bash**: script that downloads the Word2Vec word embeddings set used.
+    - **frequencies.tsv**
+
+- **.gitignore**
+
+- **LICENSE**
+
+- **SENTEVAL_LICENSE**: license of the [SentEval](https://github.com/facebookresearch/SentEval) toolkit  developed by Facebook.
+
+- **evaluation.ipynb**: Jupyter Notebook file in which the evaluation carried out is developed.
+
+- **load.py**: contains a set of functions to load and preprocess the different data sets used. The code is based on what can be found in the [SentEval](https://github.com/facebookresearch/SentEval) toolkit .
+
+
+## Evaluation
+
+[See evaluation](./evaluation.ipynb) (in Spanish)
+
+## Dependencies
+```
+gensim==3.8.2
+jupyter==1.0.0
+notebook==6.0.3
+numpy==1.18.3
+Orange3==3.25.0
+pandas==1.0.3
+sklearn==0.0
+spacy==2.2.4
+```
+<hr>
+
+# Comparativa de vectores pre-entrenados de Word2Vec, GloVe y FastText para medir la similaridad semántica entre pares de oraciones
 
 Parte del Trabajo de Fin de Grado **"Asistentes virtuales: estado del arte y desarrollo de un prototipo"** realizado por D. Pablo Valdunciel Sánchez.
  
@@ -114,54 +158,6 @@ deactivate
 ```
 
 ## Dependencias 
-```
-gensim==3.8.2
-jupyter==1.0.0
-notebook==6.0.3
-numpy==1.18.3
-Orange3==3.25.0
-pandas==1.0.3
-sklearn==0.0
-spacy==2.2.4
-```
-
-<hr>
-
-
-
-# Comparativa de vectores pre-entrenados de Word2Vec, GloVe y FastText para medir la similaridad semántica entre pares de oraciones
-
-
-## Repository structure
-
-- **data/**
-    - **datatsets/**
-        - **get_datasets.bash**: *script* que permite descargar los conjuntos de datos utilizados  en la evaluación y que es una modificación del proporcionado en el toolkit [SentEval](https://github.com/facebookresearch/SentEval).
-        - **tokenizer.vec**
-    - **embedding/**
-        - **fasttext/get_fasttext_embeddings.bash**: script that downloads the set of word vectors computed with the FastText used.
-        - **gloVe/**
-            - **2word2vec.py**: transforms the GloVe vector set to Word2Vec format.
-            - **get_glove_embeddings.bash**: script that downloads the GloVe word embeddings set used.
-    - **word2vec/get_word2vec_embeddings.bash**: script that downloads the Word2Vec word embeddings set used.
-    - **frequencies.tsv**
-
-- **.gitignore**
-
-- **LICENSE**
-
-- **SENTEVAL_LICENSE**: license of the [SentEval](https://github.com/facebookresearch/SentEval) toolkit  developed by Facebook.
-
-- **evaluation.ipynb**: Jupyter Notebook file in which the evaluation carried out is developed.
-
-- **load.py**: contains a set of functions to load and preprocess the different data sets used. The code is based on what can be found in the [SentEval](https://github.com/facebookresearch/SentEval) toolkit .
-
-
-## Evaluation
-
-[See evaluation](./evaluation.ipynb) (in Spanish)
-
-## Dependencies
 ```
 gensim==3.8.2
 jupyter==1.0.0
