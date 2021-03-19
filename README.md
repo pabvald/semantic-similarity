@@ -1,4 +1,4 @@
-# Comparison of pre-trained Word2Vec, GloVe and FastText vectors to measure semantic similarity between pairs of sentences (Spanish version below)
+# Comparison of pre-trained Word2Vec, GloVe and FastText vectors to measure semantic similarity between pairs of sentences (versión en español debajo)
 
 ## Repository structure
 
