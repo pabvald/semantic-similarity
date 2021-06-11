@@ -27,7 +27,7 @@
 
 ## Evaluation
 
-[See evaluation notebook](./evaluation.ipynb) (in Spanish)
+[See evaluation notebook](https://nbviewer.jupyter.org/github/pabvald/semantic-similarity/blob/master/evaluation.ipynb) (in Spanish)
 
 ## Dependencies
 ```
