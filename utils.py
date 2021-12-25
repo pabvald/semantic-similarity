@@ -4,9 +4,19 @@ from scipy.stats import spearmanr, pearsonr
 
 
 def preprocess(sentences, lowercase=True, stop_words=True, punctuation=True,
-                                                 only_ascii=True, lemmatization=True):
-    """ Preprocesses the given sentences applying the specified filters 
-        and extracting the tokens that verify those filters """
+               only_ascii=True, lemmatization=True):
+    """ 
+    Preprocesses the given sentences applying the specified filters 
+    and extracting the tokens that verify those filters 
+
+    :param sentences: list of sentences
+    :param lowercase: the text is lowercased
+    :param stop_words: stop words are removed
+    :param punctuation: punctuation is removed
+    :param only_ascii: non-ASCII characters are removed
+    :param lemmatization: lemmatization is applied
+    :returns: preprocessed sentences
+    """
 
     nlp = spacy.load("en_core_web_sm")
     preprocessed_sentences = []  
@@ -37,8 +47,14 @@ def preprocess(sentences, lowercase=True, stop_words=True, punctuation=True,
 
 
 def evaluate(corpus, methods):
-    """ Computes the weigthed Pearson and Spearman correlations of a STS corpus 
-        using the given methods"""
+    """ 
+    Computes the weigthed Pearson and Spearman correlations of a STS corpus 
+    using the given methods
+
+    :param corpus: a corpus of sentences
+    :param methods: dictionary of methods to be applied
+    :returns: Pearson's and Spearman's correlation coefficients of every method over the corpus
+    """
     pearson_correlations = {}
     spearman_correlations = {}
     
@@ -63,7 +79,13 @@ def evaluate(corpus, methods):
 
 
 def get_frequencies(corpus, threshold=0):
-    """ Computes the frequencies of a corpus"""
+    """ 
+    Computes the frequencies of a corpus
+    
+    :param corpus: corpus of sentences 
+    :param threshold: minimum appearance of a word
+    :returns: word frequencies
+    """
     freqs = {}
     for dataset in corpus.keys():
         sentences1, sentences2, gs = corpus[dataset]
