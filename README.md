@@ -1,6 +1,4 @@
-# Comparison of pre-trained Word2Vec, GloVe and FastText vectors to measure semantic similarity between pairs of sentences (versión en español debajo)
-
-## Repository structure
+## Content
 
 - **data/**
     - **datatsets/**
@@ -14,74 +12,14 @@
     - **word2vec/get_word2vec_embeddings.bash**: script that downloads the Word2Vec word embeddings set used.
     - **frequencies.tsv**
 
-- **.gitignore**
-
-- **LICENSE**
-
-- **SENTEVAL_LICENSE**: license of the [SentEval](https://github.com/facebookresearch/SentEval) toolkit  developed by Facebook.
-
 - **evaluation.ipynb**: Jupyter Notebook file in which the evaluation carried out is developed.
 
-- **load.py**: contains a set of functions to load and preprocess the different data sets used. The code is based on what can be found in the [SentEval](https://github.com/facebookresearch/SentEval) toolkit .
+- **load.py**: contains a set of functions to load and preprocess the different data sets used. The code is based on what can be found in the [SentEval]To run the evaluation code, contained in the Jupyter Notebook file [evaluation.ipynb](./evaluation.ipynb), you can follow the following steps:
 
+## Evaluation 
 
-## Evaluation
-
-[See evaluation notebook](https://nbviewer.jupyter.org/github/pabvald/semantic-similarity/blob/master/evaluation.ipynb) (in Spanish)
-
-## Dependencies
-```
-gensim==3.8.2
-jupyter==1.0.0
-notebook==6.0.3
-numpy==1.18.3
-Orange3==3.25.0
-pandas==1.0.3
-sklearn==0.0
-spacy==2.2.4
-```
-<hr>
-
-# Comparativa de vectores pre-entrenados de Word2Vec, GloVe y FastText para medir la similaridad semántica entre pares de oraciones
-
-Parte del Trabajo de Fin de Grado **"Asistentes virtuales: estado del arte y desarrollo de un prototipo"** realizado por D. Pablo Valdunciel Sánchez.
- 
-## Estructura del repositorio
-
-- **data/**
-    - **datatsets/**
-        - **get_datasets.bash**: *script* que permite descargar los conjuntos de datos utilizados  en la evaluación y que es una modificación del presente en el toolkit [SentEval](https://github.com/facebookresearch/SentEval).
-        - **tokenizer.vec**
-    - **embedding/**
-        - **fasttext/get_fasttext_embeddings.bash**: *script* que descarga el conjunto de de vectores de palabras computado con FastText utilizado.
-        - **gloVe/**
-            - **2word2vec.py**: transforma el conjunto de vectores de GloVe al formato Word2Vec.
-            - **get_glove_embeddings.bash**: *script* que descarga el conjunto de de vectores de palabras computado con GloVe utilizado.
-        - **word2vec/get_word2vec_embeddings.bash**: *script* que descarga el conjunto de de vectores de palabras computado con Word2Vec utilizado.    
-    - **frequencies.tsv**
-
-
-- **.gitignore**
-
-- **LICENSE**
-
-- **SENTEVAL_LICENSE**: licencia del toolkit [SentEval](https://github.com/facebookresearch/SentEval) desarollado por Facebook.
-
-- **evaluation.ipynb**: fichero de Jupyter Notebook en el que se desarrolla la evaluación realizada.
-
-- **load.py**: contiene un conjunto de funciones para cargar y preprocesar los diferentes conjuntos de datos utilizados. El código está basado en el que se puede encontrar en el toolkit [SentEval](https://github.com/facebookresearch/SentEval).
-
-- **methods.py**: contiene las funciones que implementan los tres métodos evaluados para calcular la similiridad semántica entre dos pares de oraciones: media (average), *Smooth Inverse Frequency* (SIF), y *Word Mover's distance*.
-
-- **utils.py**: contiene algunas funciones de utilidad como para preprocesar las oraciones y evaluar los resultados de los diferentes métodos.
-
-
-
-## Evaluación
-Para ver la evaluación, acceda al fichero [evaluation.pdf](./evaluation.pdf). En el caso de que desee ejecutar el código de la evaluación, contenido en el fichero de Jupyter Notebook [evaluation.ipynb](./evaluation.ipynb), puede seguir los siguientes pasos:
-
-### 1. Instalación de  Python3.7 y su herramienta de entornos virtuales
-En primer lugar, instale Python3.7 y la herramienta de entornos virtuales: 
+### 1. Installing Python3.7 and its virtual environment tool
+First, install Python3.7 and the virtual environment tool: 
 ```
 sudo apt update
 sudo apt install software-properties-common
@@ -90,27 +28,28 @@ sudo apt install python3.7
 sudo apt install python3.7-venv
 ```
 
-### 2. Creación y activación de un entorno virtual de Python3.7
-En segundo lugar, cree un entorno virtual de Python3.7 dentro de este repositorio:
+### 2. Creating and Activating a Python3.7 Virtual Environment
+Second, create a Python3.7 virtual environment inside this repository:
 
 ```
 python3.7 -m venv .venv 
 ```
-y actívelo: 
+and activate it: 
 ```
 source .venv/bin/activate
 ```
 
-### 3. Instalación de las dependencias 
-Una vez activado el entorno virtual, instale las dependencias mediante el siguiente comando:
+### 3. Installing the dependencies 
+Once the virtual environment is activated, install the dependencies using the following command:
 ```
 pip install -r requirements.txt 
 ```
-### 4. Descarga de los conjuntos de vectores 
-Tenga en cuenta que para reproducir la evaluación contenida en el fichero [evaluation.ipynb](./evaluation.ipynb) debe descargar previamente los conjuntos de vectores de palabras de Word2Vec, GloVe y FastText. Cada uno de estos conjuntos tiene un tamaño considerable y su descarga puede llevar varios minutos. 
 
-#### 4.1. Descarga del conjunto Word2Vec 
-Siendo este repositiorio (*semantic_similarity/*) el directorio actual, ejecute los siguientes comandos:
+### 4. Downloading vector sets 
+Note that in order to reproduce the evaluation contained in the [evaluation.ipynb](./evaluation.ipynb) file, you must first download the Word2Vec, GloVe and FastText word vector sets. Each of these sets is of considerable size and may take several minutes to download. 
+
+#### 4.1. Downloading the Word2Vec set 
+With this repository (*semantic_similarity/*) being the current directory, run the following commands:
 
 ```
 cd data/embedding/word2vec 
@@ -118,8 +57,8 @@ chmod +x get_word2vec_embeddings.bash
 ./get_word2vec_embeddings.bash
 ```
 
-#### 4.2. Descarga del conjunto GloVe 
-Siendo este repositiorio (*semantic_similarity/*) el directorio actual, ejecute los siguientes comandos:
+#### 4.2. Downloading the GloVe set 
+With this repository (*semantic_similarity/*) being the current directory, run the following commands:
 
 ```
 cd data/embedding/glove 
@@ -128,8 +67,8 @@ chmod +x get_glove_embeddings.bash
 python 2word2vec.py
 ```
 
-#### 4.3. Descarga del conjunto FastText 
-Siendo este repositiorio (*semantic_similarity/*) el directorio actual, ejecute los siguientes comandos:
+#### 4.3. Downloading the FastText set 
+With this repository (*semantic_similarity/*) being the current directory, run the following commands:
 
 ```
 cd data/embedding/fasttext 
@@ -137,27 +76,26 @@ chmod +x get_fasttext_embeddings.bash
 ./get_fasttext_embeddings.bash
 ```
 
-
-### 5. Descarga de los conjuntos de datos
-También es necesario descargar los conjuntos de datos. Para ellos, siendo este repositiorio (*semantic_similarity/*) el directorio actual, ejecute los siguientes comandos:
+### 5. Downloading the datasets
+It is also necessary to download the datasets. For them, this repository (*semantic_similarity/*) being the current directory, run the following commands:
 ```
 cd data/datasets
 sudo chmod +x get_datasets.bash 
 ./get_datasets.bash
 ```
 
-### 6. Inicio de Jupyter Notebook 
-Ejecute Jupyter Notebook y acceda al fichero *evaluation.ipynb*. Para ejecutar Jupyter Notebook, ejecute el siguiente comando:
+### 6. Starting Jupyter Notebook 
+Run Jupyter Notebook and access the *evaluation.ipynb* file. To run Jupyter Notebook, execute the following command:
 ```
 jupyter-notebook
 ```
 
-Una vez termine de utilizar Jupyter Notebook, en el terminal en el que ejecutó el anterior comando, utilice *Ctrl + C* para finalizar la ejecución de Jupyter Notebook. Por último, desactive el entorno virtual mediante el siguiente comando:
+Once you have finished using Jupyter Notebook, in the terminal where you executed the previous command, use *Ctrl + C* to end the execution of Jupyter Notebook. Finally, disable the virtual environment using the following command:
 ``` 
 deactivate 
 ```
 
-## Dependencias 
+## Dependencies
 ```
 gensim==3.8.2
 jupyter==1.0.0
