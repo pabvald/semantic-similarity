@@ -1,20 +1,20 @@
 ## Content
 
-- **data/**
-    - **datatsets/**
-        - **get_datasets.bash**: *script* to download the datasets used in the evaluation, which is a modification of the one provided in the [SentEval](https://github.com/facebookresearch/SentEval) toolkit.
-        - **tokenizer.vec**
-    - **embedding/**
-        - **fasttext/get_fasttext_embeddings.bash**: script that downloads the set of word vectors computed with the FastText used.
-        - **gloVe/**
-            - **2word2vec.py**: transforms the GloVe vector set to Word2Vec format.
-            - **get_glove_embeddings.bash**: script that downloads the GloVe word embeddings set used.
-    - **word2vec/get_word2vec_embeddings.bash**: script that downloads the Word2Vec word embeddings set used.
-    - **frequencies.tsv**
+- `data/`
+    - `datatsets/`
+        - `get_datasets.bash`: *script* to download the datasets used in the evaluation, which is a modification of the one provided in the [SentEval](https://github.com/facebookresearch/SentEval) toolkit.
+        - `tokenizer.vec`
+    - `embedding/`
+        - `fasttext/get_fasttext_embeddings.bash`: script that downloads the set of word vectors computed with the FastText used.
+        - `gloVe/`
+            - `2word2vec.py`: transforms the GloVe vector set to Word2Vec format.
+            - `get_glove_embeddings.bash`: script that downloads the GloVe word embeddings set used.
+    - `word2vec/get_word2vec_embeddings.bash`: script that downloads the Word2Vec word embeddings set used.
+    - `frequencies.tsv`
 
-- **evaluation.ipynb**: Jupyter Notebook file in which the evaluation carried out is developed.
+- `evaluation.ipynb`: Jupyter Notebook file in which the evaluation carried out is developed.
 
-- **load.py**: contains a set of functions to load and preprocess the different data sets used. The code is based on what can be found in the [SentEval]To run the evaluation code, contained in the Jupyter Notebook file [evaluation.ipynb](./evaluation.ipynb), you can follow the following steps:
+- `load.py`: contains a set of functions to load and preprocess the different data sets used. The code is based on what can be found in the [SentEval]To run the evaluation code, contained in the Jupyter Notebook file [evaluation.ipynb](./evaluation.ipynb), you can follow the following steps:
 
 ## Evaluation 
 
@@ -90,7 +90,7 @@ Run Jupyter Notebook and access the *evaluation.ipynb* file. To run Jupyter Note
 jupyter-notebook
 ```
 
-Once you have finished using Jupyter Notebook, in the terminal where you executed the previous command, use *Ctrl + C* to end the execution of Jupyter Notebook. Finally, disable the virtual environment using the following command:
+Once you have finished using Jupyter Notebook, in the terminal where you executed the previous command, use `Ctrl + C` to end the execution of Jupyter Notebook. Finally, disable the virtual environment using the following command:
 ``` 
 deactivate 
 ```
