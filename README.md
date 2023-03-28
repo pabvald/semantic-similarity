@@ -1,3 +1,6 @@
+# Semantic Similarity Methods
+Comparison of methods based on  pre-trained Word2Vec, GloVe and FastText vectors to measure the semantic similarity between sentence pairs
+
 ## Content
 
 - `data/`
