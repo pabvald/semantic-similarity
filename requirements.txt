@@ -1,7 +1,7 @@
 gensim==3.8.2
 jupyter==1.0.0
 notebook==6.4.1
-numpy==1.18.3
+numpy==1.22.0
 Orange3==3.25.0
 pandas==1.0.3
 sklearn==0.0
